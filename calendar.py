@@ -24,7 +24,7 @@ class Calendar(object):
         
     def _valid_date_month_day_year(self, month, day, year):
         if (type(year) is not int):
-            raise RuntimeError("Value 'year' is not an integer")
+            raise RuntimeError("Year is not an integer")
         if self._is_leap_year(year) == True:
             true_days_in_month = self.leap_no_special_days
         else:
@@ -34,7 +34,7 @@ class Calendar(object):
             if month == key:
                 tester = val
                 if day <= 0 or day > val:
-                    raise RuntimeError("Integer 'day' invalid")
+                    raise RuntimeError("Day out of range")
                 break
         if tester == None:
             raise RuntimeError('Invalid month')
@@ -43,9 +43,9 @@ class Calendar(object):
 
     def _valid_date_year_doy(self, year, doy):
         if (type(year) is not int):
-            raise RuntimeError("'year' is not an integer")
+            raise RuntimeError('Year is not an integer')
         elif (type(doy) is not int):
-            raise RuntimeError("'doy' is not an integer")
+            raise RuntimeError('doy is not an integer')
         if self._is_leap_year(year) == True:
             if doy > 366 or doy <= 0:
                 raise RuntimeError('Invalid day of year')
